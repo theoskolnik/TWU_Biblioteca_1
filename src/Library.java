@@ -1,19 +1,21 @@
 import java.io.PrintStream;
+import java.util.ArrayList;
 
 /**
  * Created by ialsanea on 1/13/15.
  */
 public class Library {
-    private PrintStream printStream;
 
-    public Library(PrintStream printStream) {
-        this.printStream = printStream;
+    private ArrayList<Book> bookList;
+
+    public Library(ArrayList<Book> bookList) {
+        this.bookList = bookList;
     }
 
-    public void printGreeting() {
-        printStream.println("Welcome");
+    public ArrayList<Book> getAllBooks() {
+        return bookList;
     }
 
-    public void printAllLibraryBooks() {
+    public void listAllLibraryBooks() {
     }
 }
