@@ -9,13 +9,13 @@ public class Book {
     private int year;
 
     public Book(String title, String author, int year) {
-
         this.title = title;
         this.author = author;
         this.year = year;
     }
 
-    public void printBookDetails(PrintStream printStream) {
-        printStream.println(title + " " + author + " " + year);
+    public String toString() {
+        String bookDetails = String.format("%-20.20s | %-10.10s | %-4s", title, author, year);
+        return bookDetails;
     }
 }

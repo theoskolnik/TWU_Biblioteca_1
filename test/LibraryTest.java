@@ -3,11 +3,13 @@ import org.junit.Test;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 
 // As a customer, after the welcome message appears I would like
@@ -20,50 +22,32 @@ import static org.mockito.Mockito.verify;
 // Author and Year Published, so that I can be confident that I have
 // found the book I am looking for. The book listing should have columns for this information.
 public class LibraryTest {
-
-    private Application app;
     private PrintStream printStream;
     private Library library;
     private Book book;
-    private Book book1;
     private Book book2;
 
 
     @Before
     public void setUp() throws Exception {
         printStream = mock(PrintStream.class);
-        app = new Application(library, printStream);
-        ArrayList<Book> bookList = new ArrayList<Book>();
-        book = new Book("Title", "Author", 2015);
-        Book book1 = new Book("Harry Potter", "JK Rowling", 2000);
-        Book book2 = new Book("Twilight", "Stephanie Mayer", 2014);
-        bookList.add(book1);
+        List<Book> bookList = new ArrayList<Book>();
+        book = mock(Book.class);
+        book2 = mock(Book.class);
+        bookList.add(book);
         bookList.add(book2);
         library = new Library(bookList);
 
     }
 
     @Test
-    public void shouldPrintWelcomeMessageWhenAppStarts() {
-        app.start();
-        verify(printStream).println("Welcome");
-    }
+    public void shouldPrintAllBooksFromLibrary() {
+        when(book.toString()).thenReturn("Harry Potter JK Rowling 1999");
+        when(book2.toString()).thenReturn("Twilight Jennifer Meyer 2004");
+        library.printAllLibraryBooks(printStream);
 
-    ////// FAILURE!
-    @Test
-    public void shouldGetAllBooksFromLibrary() {
-        ArrayList<Book> bookList2 = new ArrayList<Book>();
-        bookList2.add(book1);
-        bookList2.add(book2);
-
-        assertThat(library.getAllBooks(), is(bookList2));
-    }
-
-
-    @Test
-    public void shouldListADetailsOfSingleBook() {
-        book.printBookDetails(printStream);
-        verify(printStream).println("Title Author " + 2015);
+        verify(printStream).println("Harry Potter JK Rowling 1999");
+        verify(printStream).println("Twilight Jennifer Meyer 2004");
     }
 
 

@@ -15,9 +15,4 @@ public class Application {
     public void start() {
         printStream.println("Welcome");
     }
-
-
-    public void printLibraryBooks() {
-
-    }
 }
