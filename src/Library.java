@@ -13,6 +13,7 @@ public class Library {
     }
 
     public ArrayList<Book> getAllBooks() {
+//        System.out.println(bookList);
         return bookList;
     }
 

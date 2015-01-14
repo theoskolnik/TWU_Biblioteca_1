@@ -15,7 +15,17 @@ public class Book {
         this.year = year;
     }
 
-    public void printBookDetails(PrintStream printStream) {
-        printStream.println(title + " " + author + " " + year);
+    public String returnBookDetails() {
+        return formattedTitle() + " | " + formattedAuthor() + " | " + year;
+    }
+
+    private String formattedAuthor() {
+//        return String.format("%1$"+length+ "s", string);
+        return String.format( "%-1$10s", author);
+//        return author.substring(0, Math.min(author.length(), 10));
+    }
+
+    private String formattedTitle() {
+        return title.substring(0, Math.min(title.length(), 20));
     }
 }
