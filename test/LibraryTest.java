@@ -53,7 +53,7 @@ public class LibraryTest {
 
     @Test
     public void shouldListADetailsOfSingleBook() {
-
+        assert(book1, )
     }
 
 

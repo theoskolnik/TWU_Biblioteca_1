@@ -16,16 +16,7 @@ public class Book {
     }
 
     public String returnBookDetails() {
-        return formattedTitle() + " | " + formattedAuthor() + " | " + year;
-    }
-
-    private String formattedAuthor() {
-//        return String.format("%1$"+length+ "s", string);
-        return String.format( "%-1$10s", author);
-//        return author.substring(0, Math.min(author.length(), 10));
-    }
-
-    private String formattedTitle() {
-        return title.substring(0, Math.min(title.length(), 20));
+        String formatString = "%-20.20s | %-10s | %-4s";
+        return String.format(formatString, title, author, year);
     }
 }
